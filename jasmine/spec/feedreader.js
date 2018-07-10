@@ -80,8 +80,7 @@ $(function() {
 
     describe('Initial Entries', function() {
         const feedIndex = 0;
-        const articleTitle = document.querySelector('.header-title');
-  
+          
         beforeEach(function(done ) {
            loadFeed(feedIndex, function() {
               done();
@@ -128,4 +127,4 @@ $(function() {
             expect(firstFeed).not.toBe(secondFeed);
         });
     });
-}())
+}());
