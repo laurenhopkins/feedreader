@@ -82,7 +82,7 @@ $(function() {
         const feedIndex = 0;
         const articleTitle = document.querySelector('.header-title');
   
-        beforeEach(function(done) {
+        beforeEach(function(done ) {
            loadFeed(feedIndex, function() {
               done();
            });
@@ -103,10 +103,29 @@ $(function() {
         });
      });
     
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    // This test suite is about the New Feed Selection
 
-        /* TODO: Write a test that ensures when a new feed is loaded
+    describe('New Feed Selection', function() {
+        const feed = document.querySelector('.feed');
+        let firstFeed;
+        let secondFeed;
+
+        /* This test ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
          */
+
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+               firstFeed = feed.innerHTML;
+               loadFeed(1, function() {
+                secondFeed = feed.innerHTML;
+                  done();
+               });
+            });
+        });
+
+        it('changes content when a new feed is loaded', function() {
+            expect(firstFeed).not.toBe(secondFeed);
+        });
+    });
 }())
